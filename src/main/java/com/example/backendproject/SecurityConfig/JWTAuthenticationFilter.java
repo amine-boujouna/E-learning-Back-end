@@ -1,4 +1,4 @@
-package com.example.backendproject.security;
+package com.example.backendproject.SecurityConfig;
 
 import java.io.IOException;
 import java.util.ArrayList;

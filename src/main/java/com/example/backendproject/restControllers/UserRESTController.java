@@ -1,19 +1,25 @@
 package com.example.backendproject.restControllers;
 
-import java.security.Principal;
+
 import java.util.List;
+
+
 
 import com.example.backendproject.entities.Role;
 import com.example.backendproject.entities.User;
-import com.example.backendproject.service.UserService;
+
+import com.example.backendproject.repos.UserRepository;
 import com.example.backendproject.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.Authentication;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 
 @RestController
@@ -23,7 +29,8 @@ public class UserRESTController {
 	
 	@Autowired
 	UserServiceImpl userService;
-	
+	@Autowired
+	UserRepository userRepository;
 	@RequestMapping(path="all",method=RequestMethod.GET)
 	public List<User> getAllUsers() {
 		return userService.findAllUsers();
@@ -53,13 +60,16 @@ public class UserRESTController {
 	public void RestPassword(@PathVariable("email") String email,@PathVariable("newpass") String newpass,@PathVariable("cofirm") String cofirm) {
 		userService.RestPassword(email,newpass,cofirm);
 	}
-	@PostMapping("/activecompte/{username}")
+	@GetMapping("/username/{username}")
+	public User getUser(@PathVariable("username") String username) {
+		return userService.getUser(username);
+	}
+
+	@PutMapping("/activecompte/{username}")
 	public String activecompte(@PathVariable("username") String username) {
 		userService.activecompte(username);
 		return "activated";
 	}
 
-
-	
 
 }

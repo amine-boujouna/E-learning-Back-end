@@ -1,9 +1,11 @@
-package com.example.backendproject.security;
+package com.example.backendproject.SecurityConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.backendproject.entities.User;
+import com.example.backendproject.repos.UserRepository;
 import com.example.backendproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,11 +22,13 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	UserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		User user = userService.findUserByUsername(username);
+		User user = userRepository.findByUsername(username);
 		if (user==null)
 			throw new UsernameNotFoundException("Utilisateur introuvable!");
 		

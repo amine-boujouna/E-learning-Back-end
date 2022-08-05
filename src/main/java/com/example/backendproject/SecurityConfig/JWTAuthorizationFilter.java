@@ -1,4 +1,4 @@
-package com.example.backendproject.security;
+package com.example.backendproject.SecurityConfig;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 		JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SecParams.SECRET)).build();
 		
 		jwt = jwt.substring(SecParams.PREFIX.length());
-		
+
 		DecodedJWT decodedJWT = verifier.verify(jwt); 
 		
 		String username = decodedJWT.getSubject();
@@ -64,7 +64,11 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 		
 		SecurityContextHolder.getContext().setAuthentication(user);
 		filterChain.doFilter(request, response);
-		
+
+
+
 	}
+
+
 
 }

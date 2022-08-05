@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 
 import java.util.Arrays;
 
@@ -17,31 +19,16 @@ public class BackendprojectApplication {
     @Autowired
     UserServiceImpl userService;
     public static void main(String[] args) {
+
         SpringApplication.run(BackendprojectApplication.class, args);
     }
     @Bean
     BCryptPasswordEncoder getBCE() {
         return new BCryptPasswordEncoder();
     }
-  /*  @PostConstruct
-    void init_users() {
-        //ajouter les rôles
-        userService.addRole(new Role(null,"ADMIN"));
-        userService.addRole(new Role(null,"USER"));
 
-        //ajouter les users
-        userService.saveUser(new User(null,"admin","123",true,null));
-        userService.saveUser(new User(null,"nadhem","123",true,null));
-        userService.saveUser(new User(null,"yassine","123",true,null));
 
-        //ajouter les rôles aux users
-        userService.addRoleToUser("admin", "ADMIN");
-        userService.addRoleToUser("admin", "USER");
-        userService.addRoleToUser("nadhem", "USER");
-        userService.addRoleToUser("yassine", "USER");
-    }
 
-   */
   @Bean
   public CorsFilter corsFilter() {
       CorsConfiguration corsConfiguration = new CorsConfiguration();
