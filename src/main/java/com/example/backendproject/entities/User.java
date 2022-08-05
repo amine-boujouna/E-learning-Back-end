@@ -1,5 +1,6 @@
 package com.example.backendproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class User {
 	private String username;
 	@Column(unique = true)
 	private String email;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date datenaissance;
 	private Long phone;
 	private String sexe;
