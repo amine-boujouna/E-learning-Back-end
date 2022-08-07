@@ -13,9 +13,39 @@ import java.io.Serializable;
 @Builder
 public class Exercice {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "exercice_id")
-        private Long id;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "exercice_id")
+    private long id;
+
+    ////////////1
+    @OneToOne
+    private Niveau niveau;
+    ////////////2
+    @OneToOne
+    private Trimestre trimestre;
+    ////////////3
+    @OneToOne
+    private Champ champ;
+
+
+
+
+    /////////////////////4
+
+
+    ////////////5
+    @OneToOne
+    private Chapitre chapitre;
+    ////////////6
+    @OneToOne
+    private Difficulte difficulte;
+
+    ////////////7
+
+    private long numero;
+
+    ////////////8 type exercice annexe
+
+}
 

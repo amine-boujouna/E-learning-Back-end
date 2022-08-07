@@ -10,7 +10,6 @@ import com.example.backendproject.entities.User;
 import com.example.backendproject.repos.RoleRepository;
 import com.example.backendproject.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

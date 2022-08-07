@@ -34,7 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.headers().addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","*"));
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.authorizeRequests().antMatchers("/login","/addrole","/addroleauser/{username}/{rolename}","/add","/forgetpassword/{email}","/resetpassword/{email}/{newpass}/{cofirm}","/activecompte/{username}","/all","/activecompte/{username}","/username/{username}","/api/niveau/{idNiveau}","/api/niveau").permitAll();
+		http.authorizeRequests().antMatchers("/login","/addrole","/addroleauser/{username}/{rolename}","/add","/forgetpassword/{email}","/resetpassword/{email}/{newpass}/{cofirm}","/activecompte/{username}","/all"
+				,"/activecompte/{username}","/username/{username}","/niveau/{idNiveau}","/niveau/{idNiveau}","/niveau","/niveau","/niveau","/trimestre","/trimestre/{idTrimestre}","/sousChamp/{id_champ}","/sousChamp","/sousChamp/{idSousChamp}","/sousChamps/{idChamp}","/exercice/{idExercice}","/exercice","/exercice/{idExercice}"
+				,"/difficulte","/difficulte/{idDifficulte}","/chapitre","/chapitre/{idChapitre}","/champ","/champ/{idChamp}","/exercice/{idExercice}").permitAll();
 	//	http.authorizeRequests().antMatchers("/all").hasAuthority("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter (authenticationManager())) ;
