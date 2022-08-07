@@ -1,9 +1,12 @@
 package com.example.backendproject.entities;
 
+
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -11,8 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Table(name = "Exercice")
 @Builder
-public class Exercice {
-
+public class Exercice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exercice_id")
@@ -26,7 +28,7 @@ public class Exercice {
     private Trimestre trimestre;
     ////////////3
     @OneToOne
-    private Champ champ;
+    private SousChamp sousChamp;
 
 
 
@@ -46,6 +48,17 @@ public class Exercice {
     private long numero;
 
     ////////////8 type exercice annexe
+
+    ////////////9
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exercice")
+    Set<Fichier> fichiers;
+
+    @ManyToOne
+    User user;
+
+
+
+
 
 }
 
